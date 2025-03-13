@@ -1,0 +1,20 @@
+{
+  "name": "ecom-server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "pg": "^8.14.0",
+    "sequelize": "^6.37.6"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}
