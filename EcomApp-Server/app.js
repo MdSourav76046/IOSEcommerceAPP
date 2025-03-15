@@ -1,9 +1,13 @@
 const express = require('express')
 const models = require('./models')
 const { Op } = require('sequelize')
+const cors = require('cors')
 const { body, validationResult } = require('express-validator')
 const app = express()
+const bcrypt = require('bcrypt')
+// Using CORS
 
+app.use(cors())
 // JSON Parser
 app.use(express.json())
 
@@ -12,7 +16,7 @@ const registerValidator = [
     body('password', 'password can not be empty').not().isEmpty()
 ]
 // Routing
-app.post('/register', registerValidator, async (req, res) => {
+app.post('/api/auth/register', registerValidator, async (req, res) => {
 
     const errors = validationResult(req)
     console.log(errors)
@@ -30,15 +34,19 @@ app.post('/register', registerValidator, async (req, res) => {
         })
 
         if (existingUser) {
-            return res.json({ success: false, message: "User already exists" })
+            return res.status(409).json({ success: false, message: "User already exists" })
         }
+
+        // create a password hash
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
 
         // create a new user in the database
         const newUser = await models.User.create({
             username: username,
-            password: password
+            password: hashedPassword
         })
-        res.status(201).json(newUser)
+        res.status(201).json({ success: true, message: "User created successfully" })
     } catch (err) {
          res.status(500).json({ success: false, message: 'Internal Server Error' })
     }

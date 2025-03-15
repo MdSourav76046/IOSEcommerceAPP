@@ -11,6 +11,13 @@
 		21189BE72D7BA2930045B265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21189BE62D7BA2930045B265 /* ContentView.swift */; };
 		21189BE92D7BA2940045B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BE82D7BA2940045B265 /* Assets.xcassets */; };
 		21189BEC2D7BA2950045B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */; };
+		216CA2442D837672003589F5 /* AuthonticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CA2432D837672003589F5 /* AuthonticationController.swift */; };
+		216CA2472D83772C003589F5 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CA2462D83772C003589F5 /* HTTPClient.swift */; };
+		216CA24A2D83789E003589F5 /* AuthenticationEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */; };
+		21D552C92D84D9A9000A706D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D552C82D84D9A9000A706D /* Constants.swift */; };
+		21D552CC2D84DAED000A706D /* DTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D552CB2D84DAED000A706D /* DTOs.swift */; };
+		21D552CF2D84DC1F000A706D /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D552CE2D84DC1F000A706D /* RegistrationScreen.swift */; };
+		21D552D22D84DD87000A706D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D552D12D84DD87000A706D /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		21189BE62D7BA2930045B265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21189BE82D7BA2940045B265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		216CA2432D837672003589F5 /* AuthonticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthonticationController.swift; sourceTree = "<group>"; };
+		216CA2462D83772C003589F5 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationEnvironmentKey.swift; sourceTree = "<group>"; };
+		21D552C82D84D9A9000A706D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		21D552CB2D84DAED000A706D /* DTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOs.swift; sourceTree = "<group>"; };
+		21D552CE2D84DC1F000A706D /* RegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
+		21D552D12D84DD87000A706D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,13 @@
 		21189BE32D7BA2930045B265 /* EcomApp */ = {
 			isa = PBXGroup;
 			children = (
+				21D552D02D84DD6B000A706D /* Extensions */,
+				21D552CD2D84DBFE000A706D /* Screens */,
+				21D552CA2D84DADD000A706D /* Models */,
+				21D552C52D84D960000A706D /* Utils */,
+				216CA2482D837881003589F5 /* Environment Values */,
+				216CA2452D83771C003589F5 /* Clients */,
+				216CA2422D837648003589F5 /* Controllers */,
 				21189BE42D7BA2930045B265 /* EcomAppApp.swift */,
 				21189BE62D7BA2930045B265 /* ContentView.swift */,
 				21189BE82D7BA2940045B265 /* Assets.xcassets */,
@@ -65,6 +86,62 @@
 				21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		216CA2422D837648003589F5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				216CA2432D837672003589F5 /* AuthonticationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		216CA2452D83771C003589F5 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				216CA2462D83772C003589F5 /* HTTPClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		216CA2482D837881003589F5 /* Environment Values */ = {
+			isa = PBXGroup;
+			children = (
+				216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */,
+			);
+			path = "Environment Values";
+			sourceTree = "<group>";
+		};
+		21D552C52D84D960000A706D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				21D552C82D84D9A9000A706D /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		21D552CA2D84DADD000A706D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21D552CB2D84DAED000A706D /* DTOs.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		21D552CD2D84DBFE000A706D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				21D552CE2D84DC1F000A706D /* RegistrationScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		21D552D02D84DD6B000A706D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				21D552D12D84DD87000A706D /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				216CA2442D837672003589F5 /* AuthonticationController.swift in Sources */,
 				21189BE72D7BA2930045B265 /* ContentView.swift in Sources */,
+				21D552CC2D84DAED000A706D /* DTOs.swift in Sources */,
+				216CA2472D83772C003589F5 /* HTTPClient.swift in Sources */,
+				21D552D22D84DD87000A706D /* String+Extensions.swift in Sources */,
+				216CA24A2D83789E003589F5 /* AuthenticationEnvironmentKey.swift in Sources */,
 				21189BE52D7BA2930045B265 /* EcomAppApp.swift in Sources */,
+				21D552CF2D84DC1F000A706D /* RegistrationScreen.swift in Sources */,
+				21D552C92D84D9A9000A706D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
