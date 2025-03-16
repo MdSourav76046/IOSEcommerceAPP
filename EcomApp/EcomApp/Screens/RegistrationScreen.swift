@@ -3,7 +3,6 @@
 //  EcomApp
 //
 //  Created by Md.Sourav on 15/3/25.
-//
 
 import SwiftUI
 
@@ -12,12 +11,13 @@ struct RegistrationScreen: View {
     @Environment(\.authenticationController) private var authenticationController
     
     @Environment(\.dismiss) private var dismiss
+    
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var messege: String = ""
     
     private var isFormValid: Bool {
-        !username.isEmptyOrWhitespace && !password.isEmptyOrWhitespace
+        return !username.isEmptyOrWhitespace && !password.isEmptyOrWhitespace
     }
     
     private func register() async {
@@ -38,6 +38,7 @@ struct RegistrationScreen: View {
         password = ""
         username = ""
     }
+    
     var body: some View {
         Form {
             TextField("User Name", text: $username)
@@ -49,7 +50,7 @@ struct RegistrationScreen: View {
                 }
             }.disabled(!isFormValid)
             Text(messege)
-        }.navigationTitle("Rsgister")
+        }.navigationTitle("Register")
     }
 }
 
