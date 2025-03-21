@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct EcomAppApp: App {
+    
+    @State private var productStore = ProductStore(httpClient: HTTPClient())
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeScreen()
+            .environment(\.authenticationController, .development)
+            .environment(productStore)
         }
     }
 }

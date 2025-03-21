@@ -3,7 +3,6 @@ const { Op } = require('sequelize')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { validationResult } = require('express-validator')
-const user = require('../models/user')
 
 exports.login = async (req, res) => {
     const errors = validationResult(req)

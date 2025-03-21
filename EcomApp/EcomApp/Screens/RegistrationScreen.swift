@@ -28,7 +28,7 @@ struct RegistrationScreen: View {
                 dismiss()
             }
             else {
-                messege = response.messege ?? ""
+                messege = response.message ?? ""
             }
         } catch {
             messege = error.localizedDescription
