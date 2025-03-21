@@ -21,6 +21,8 @@
 		216CA2472D83772C003589F5 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CA2462D83772C003589F5 /* HTTPClient.swift */; };
 		216CA24A2D83789E003589F5 /* AuthenticationEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */; };
 		2192E6782D89FD4100891F4E /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E6772D89FD4100891F4E /* ProductCellView.swift */; };
+		219D4F362D8DE95D000A8677 /* UploaderEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D4F352D8DE95D000A8677 /* UploaderEnvironmentKey.swift */; };
+		219D4F392D8E083F000A8677 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D4F382D8E083F000A8677 /* ImagePicker.swift */; };
 		219D8F782D883E7F000531BE /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 219D8F772D883E7F000531BE /* JWTDecode */; };
 		219D8F7B2D883ED4000531BE /* JWTTokenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D8F7A2D883ED4000531BE /* JWTTokenValidator.swift */; };
 		219D8F7D2D886379000531BE /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D8F7C2D886379000531BE /* HomeScreen.swift */; };
@@ -50,6 +52,8 @@
 		216CA2462D83772C003589F5 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationEnvironmentKey.swift; sourceTree = "<group>"; };
 		2192E6772D89FD4100891F4E /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
+		219D4F352D8DE95D000A8677 /* UploaderEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderEnvironmentKey.swift; sourceTree = "<group>"; };
+		219D4F382D8E083F000A8677 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		219D8F7A2D883ED4000531BE /* JWTTokenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTokenValidator.swift; sourceTree = "<group>"; };
 		219D8F7C2D886379000531BE /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		219D8F7F2D887EB2000531BE /* RequiresAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiresAuthentication.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				216CA2492D83789E003589F5 /* AuthenticationEnvironmentKey.swift */,
+				219D4F352D8DE95D000A8677 /* UploaderEnvironmentKey.swift */,
 			);
 			path = "Environment Values";
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				21D552C82D84D9A9000A706D /* Constants.swift */,
 				212D909D2D872ED00090C510 /* KeyChainWrapper.swift */,
+				219D4F382D8E083F000A8677 /* ImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				21D552D22D84DD87000A706D /* String+Extensions.swift in Sources */,
 				21537BE42D8B591A0058E93B /* MyProductListScreen.swift in Sources */,
 				21537BE22D8B510B0058E93B /* Errors.swift in Sources */,
+				219D4F362D8DE95D000A8677 /* UploaderEnvironmentKey.swift in Sources */,
 				219D8F7D2D886379000531BE /* HomeScreen.swift in Sources */,
 				219D8F7B2D883ED4000531BE /* JWTTokenValidator.swift in Sources */,
 				216CA24A2D83789E003589F5 /* AuthenticationEnvironmentKey.swift in Sources */,
@@ -329,6 +336,7 @@
 				219D8F802D887EB2000531BE /* RequiresAuthentication.swift in Sources */,
 				21D552C92D84D9A9000A706D /* Constants.swift in Sources */,
 				212D909C2D86DD930090C510 /* LoginScreen.swift in Sources */,
+				219D4F392D8E083F000A8677 /* ImagePicker.swift in Sources */,
 				219D8F842D88F702000531BE /* ProductListScreen.swift in Sources */,
 				219D8F872D88F8EA000531BE /* ProductStore.swift in Sources */,
 			);

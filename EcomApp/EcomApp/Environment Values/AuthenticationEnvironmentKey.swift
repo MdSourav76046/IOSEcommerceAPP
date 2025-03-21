@@ -19,5 +19,3 @@ extension EnvironmentValues {
         set { self[AuthenticationEnvironmentKey.self] = newValue }
     }
 }
-
-
