@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct MyProductListScreen: View {
     
     @Environment(ProductStore.self) private var productStore
@@ -27,11 +26,17 @@ struct MyProductListScreen: View {
     
     var body: some View {
         List(productStore.myProducts) { product in
-            ProductCellView(product: product)
+            NavigationLink {
+                Text("Hello There!")
+            } label: {
+                MyProductCellView(product: product)
+            }
+
         }
-        .task {
-            await loadMyProducts()
-        }
+        .listStyle(.plain)
+            .task {
+                await loadMyProducts()
+            }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add Product") {
@@ -43,6 +48,34 @@ struct MyProductListScreen: View {
                     AddProductScreen()
                 }
             })
+    }
+}
+
+
+struct MyProductCellView: View {
+    let product: Product
+    var body: some View {
+        HStack(alignment: .top) {
+            AsyncImage(url: product.photoUrl) { img in
+                img.resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .frame(width: 100, height: 100)
+            } placeholder: {
+                ProgressView("Loading ...")
+            }
+            
+            Spacer()
+            
+            VStack {
+                Text(product.name)
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text(product.price, format: .currency(code: "USD"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+        }
     }
 }
 

@@ -1,14 +1,13 @@
-//
 //  ProductStore.swift
 //  EcomApp
 //
 //  Created by Md.Sourav on 18/3/25.
-//
 
 import Foundation
 import Observation
 
 @Observable
+@MainActor
 class ProductStore {
     
     let httpClient: HTTPClient
@@ -36,7 +35,7 @@ class ProductStore {
         if let product = response.product, response.success {
             myProducts.append(product)
         } else {
-            throw ProductSaveError.operationFailed(response.message ?? "")
+            throw ProductError.operationFailed(response.message ?? "")
         }
         
     }

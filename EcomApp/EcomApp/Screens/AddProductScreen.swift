@@ -3,10 +3,10 @@
 //  EcomApp
 //
 //  Created by Md.Sourav on 20/3/25.
-//
 
 import SwiftUI
 import PhotosUI
+
 
 struct AddProductScreen: View {
     
@@ -15,8 +15,8 @@ struct AddProductScreen: View {
     @State private var price: Float?
     
     @Environment(\.dismiss) private var dismiss
-    
     @Environment(ProductStore.self) private var productStore
+    @Environment(\.uploader) private var uploader
     @AppStorage("userId") private var userId: Int?
     
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
@@ -33,15 +33,24 @@ struct AddProductScreen: View {
     private func saveProduct() async {
        
         do {
+            guard let uiImage = uiImage, let imageData = uiImage.pngData() else {
+                throw ProductError.missingImage
+            }
+            let uploadDataResponse = try await uploader.upload(data: imageData)
+            
+            guard let downloadURL = uploadDataResponse.downloadUrl, uploadDataResponse.success else{
+                throw ProductError.uploadFailed(uploadDataResponse.message ?? "")
+            }
+            
             guard let userId = self.userId else {
-                throw ProductSaveError.missingUserId
+                throw ProductError.missingUserId
             }
             
             guard let price = price else {
-                throw ProductSaveError.invalidPrice
+                throw ProductError.invalidPrice
             }
             
-            let product = Product(name: name, description: description, price: price, photoUrl: URL(string: "http://localhost:8080/api/uploads/chair.png")!, userId: userId)
+            let product = Product(name: name, description: description, price: price, photoUrl: downloadURL, userId: userId)
             
             try await productStore.saveProduct(product)
             print(userId)
@@ -53,6 +62,7 @@ struct AddProductScreen: View {
         }
     }
     
+
     var body: some View {
         Form {
             TextField("Enter name", text: $name)
@@ -61,18 +71,18 @@ struct AddProductScreen: View {
             TextField("Enter price", value: $price, format: .number)
             HStack{
 
-                Button {
-                    print("\(isCameraSelected)")
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        print("Hello")
-                        isCameraSelected = true
-                    }
-                    else {
-                        print("Camera is not supported in this device!")
-                    }
-                } label: {
-                    Image(systemName: "camera.fill")
-                }
+//                Button {
+//                    print("\(isCameraSelected)")
+//                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                        print("Hello")
+//                        isCameraSelected = true
+//                    }
+//                    else {
+//                        print("Camera is not supported in this device!")
+//                    }
+//                } label: {
+//                    Image(systemName: "camera.fill")
+//                }
                 
                 
                 PhotosPicker(selection: $selectedPhotoItem,
@@ -91,19 +101,18 @@ struct AddProductScreen: View {
                     .aspectRatio(contentMode: .fit)
             }
         }
-        
-        .onChange(of: selectedPhotoItem,  {
-            selectedPhotoItem?.loadTransferable(type: Data.self, completionHandler : { result in
-                switch result {
-                    case .success(let data):
-                        if let data {
-                            uiImage = UIImage(data: data)
-                        }
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    
+        .task(id: selectedPhotoItem, {
+            if let selectedPhotoItem {
+                do {
+                    if let data = try await selectedPhotoItem.loadTransferable(type: Data.self){
+                        uiImage = UIImage(data: data)
+                    }
+                        
+                } catch{
+                    print(error.localizedDescription)
                 }
-            })
+                
+            }
         })
         .sheet(isPresented: $isCameraSelected, content: {
             
@@ -125,5 +134,7 @@ struct AddProductScreen: View {
 #Preview {
     NavigationStack {
         AddProductScreen()
-    }.environment(ProductStore(httpClient: .development))
+    }
+    .environment(ProductStore(httpClient: .development))
+    .environment(\.uploader, Uploader(httpClient: .development))
 }

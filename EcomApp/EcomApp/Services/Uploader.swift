@@ -34,7 +34,6 @@ struct Uploader {
     
     private func createMultipartFormDataBody(data: Data, mimetype: MimeType = .png, boundary: String) -> Data {
         var body = Data()
-        let lineBreak = "\r\n"
         
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"image\"; filename=\"upload.png\"\r\n".data(using: .utf8)!)
