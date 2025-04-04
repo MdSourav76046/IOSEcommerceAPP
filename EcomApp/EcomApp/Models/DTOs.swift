@@ -39,7 +39,7 @@ struct Product: Codable, Identifiable {
 
 extension Product {
     static var preview : Product {
-        Product(id: 1, name: "Chair", description: "This is a fucking chair", price: 20, photoUrl: URL(string: "http://localhost:8080/uploads/chair.png"), userId: 19)
+        Product(id: 1, name: "Chair", description: "This is a fucking chair", price: 20, photoUrl: URL(string: "http://localhost:8080/api/uploads/image-1742761150688.png"), userId: 19)
     }
     
     
@@ -59,5 +59,10 @@ struct LoginResponse : Codable {
 struct CreateProductResponse: Codable {
     let success: Bool
     let product: Product?
+    let message: String?
+}
+ 
+struct DeleteProductResponse: Codable {
+    let success: Bool
     let message: String?
 }

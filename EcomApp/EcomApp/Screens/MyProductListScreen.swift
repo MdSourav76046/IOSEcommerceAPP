@@ -27,27 +27,32 @@ struct MyProductListScreen: View {
     var body: some View {
         List(productStore.myProducts) { product in
             NavigationLink {
-                Text("Hello There!")
+                MyProductDetailScreen(product: product)
             } label: {
                 MyProductCellView(product: product)
             }
 
         }
         .listStyle(.plain)
-            .task {
-                await loadMyProducts()
+        .task {
+            await loadMyProducts()
+        }
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Add Product") {
+                    isPresented = true
+                }
             }
-            .toolbar(content: {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add Product") {
-                        isPresented = true
-                    }
-                }
-            }).sheet(isPresented: $isPresented, content: {
-                NavigationStack {
-                    AddProductScreen()
-                }
-            })
+        }).sheet(isPresented: $isPresented, content: {
+            NavigationStack {
+                AddProductScreen()
+            }
+        })
+        .overlay(alignment: .center){
+            if productStore.myProducts.isEmpty {
+                ContentUnavailableView("No Product Found!", systemImage: "doc.text.magnifyingglass")
+            }
+        }
     }
 }
 
