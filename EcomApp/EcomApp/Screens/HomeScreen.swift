@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum AppScreen: Hashable, Identifiable, CaseIterable {
     case home
     case myProducts

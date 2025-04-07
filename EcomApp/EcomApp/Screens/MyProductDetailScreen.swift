@@ -11,7 +11,7 @@ struct MyProductDetailScreen: View {
     let product: Product
     @Environment(ProductStore.self) private var productStore
     @Environment(\.dismiss) private var dismiss
-    
+    @State private var isPresented: Bool = false
     
     private func deleteProduct() async {
         do {
@@ -63,6 +63,18 @@ struct MyProductDetailScreen: View {
             
         }
         .padding()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Update") {
+                    isPresented = true
+                }
+            }
+        }
+        .sheet(isPresented: $isPresented) {
+            NavigationStack {
+                AddProductScreen(product: product)
+            }
+        }
     }
 }
 

@@ -1,4 +1,3 @@
-const { where } = require('sequelize')
 const models = require('../models')
 const { validationResult } = require('express-validator')
 const multer = require('multer')
@@ -142,5 +141,42 @@ exports.deleteProduct = async (req, res) => {
         res.json({ success: true, message: "Product with ID " + productId + " has been deleted" })
     } catch (error) {
         res.status(500).json({ success: false, message: "Error deleting product with ID " + error.message })
+    }
+}
+
+
+exports.updateProduct = async (req, res) => {
+    const errors = validationResult(req)    
+
+    if (!errors.isEmpty()) {
+        const msg = errors.array().map(erros => erros.msg).join('')
+        return res.status(422).json({ success: false, message: msg }) 
+    }
+
+    try {
+        const productId = req.params.productId
+        const { name, description, price, photo_url, user_id } = req.body
+
+        const product = await models.Product.findOne({
+            where: {
+                id: productId,
+                user_id: user_id
+            }
+        })
+
+        if (!product) {
+            return res.status(404).json({ success: false, message: "Product not found" })
+        }
+        
+        await product.update({
+            name: name,
+            description: description,
+            price: price,
+            photo_url: photo_url,
+        })
+
+        res.status(200).json({ success: true, message: "Product with ID " + productId + " has been updated", product: product})
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error updating product with ID " + error.message })
     }
 }
