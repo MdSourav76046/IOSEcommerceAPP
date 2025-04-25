@@ -146,37 +146,51 @@ exports.deleteProduct = async (req, res) => {
 
 
 exports.updateProduct = async (req, res) => {
-    const errors = validationResult(req)    
+
+    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-        const msg = errors.array().map(erros => erros.msg).join('')
-        return res.status(422).json({ success: false, message: msg }) 
+        const msg = errors.array().map(error => error.msg).join('')
+        return res.status(422).json({ message: msg, success: false });
     }
 
     try {
-        const productId = req.params.productId
         const { name, description, price, photo_url, user_id } = req.body
+        const { productId } = req.params 
 
         const product = await models.Product.findOne({
             where: {
-                id: productId,
+                id: productId, 
                 user_id: user_id
             }
         })
 
-        if (!product) {
-            return res.status(404).json({ success: false, message: "Product not found" })
+        console.log(product)
+
+        if(!product) {
+            return res.status(404).json({ message: 'Product not found', success: false });
         }
-        
+
+        // update the product 
         await product.update({
-            name: name,
-            description: description,
-            price: price,
-            photo_url: photo_url,
+            name, 
+            description, 
+            price, 
+            photo_url
         })
 
-        res.status(200).json({ success: true, message: "Product with ID " + productId + " has been updated", product: product})
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Error updating product with ID " + error.message })
+        return res.status(200).json({
+            message: 'Product updated successfully', 
+            success: true, 
+            product 
+        })
+
+
+    } catch (err) {
+        return res.status(500).json({
+            message: 'An error occurred while updating the product',
+            success: false
+          });
     }
+
 }

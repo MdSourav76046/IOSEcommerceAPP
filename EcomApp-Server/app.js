@@ -4,6 +4,7 @@ const app = express()
 
 const authRoutes = require('./routes/auth')
 const productRoutes = require('./routes/product')
+const cartRoutes = require('./routes/cart')
 
 // make static folder uploads
 app.use('/api/uploads', express.static('uploads'))
@@ -16,6 +17,11 @@ app.use(express.json())
 
 // Register Our Routers
 app.use('/api/auth', authRoutes)
+
+// Cart Routes
+app.use('/api/carts', cartRoutes)
+
+// Product Routes
 app.use('/api/products', productRoutes)
 
 
