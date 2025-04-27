@@ -19,7 +19,7 @@ app.use(express.json())
 app.use('/api/auth', authRoutes)
 
 // Cart Routes
-app.use('/api/carts', cartRoutes)
+app.use('/api/cart', cartRoutes)
 
 // Product Routes
 app.use('/api/products', productRoutes)
