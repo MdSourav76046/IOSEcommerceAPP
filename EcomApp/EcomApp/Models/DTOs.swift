@@ -39,7 +39,7 @@ struct Product: Codable, Identifiable {
 
 extension Product {
     static var preview : Product {
-        Product(id: 1, name: "Chair", description: "Experience the perfect balance of style and comfort with our Elegant Comfort Wooden Chair. Crafted from high-quality mahogany wood and designed with a minimalist modern aesthetic, this chair adds timeless charm to any living space, dining room, or office setting. The ergonomically curved backrest ensures excellent support, while the smooth, polished finish enhances both durability and appearance.", price: 20, photoUrl: URL(string: "http://localhost:8080/api/uploads/image-1742761150688.png"), userId: 19)
+        Product(id: 71, name: "Chair", description: "Experience the perfect balance of style and comfort with our Elegant Comfort Wooden Chair. Crafted from high-quality mahogany wood and designed with a minimalist modern aesthetic, this chair adds timeless charm to any living space, dining room, or office setting. The ergonomically curved backrest ensures excellent support, while the smooth, polished finish enhances both durability and appearance.", price: 20, photoUrl: URL(string: "http://localhost:8080/api/uploads/image-1744403104753.png"), userId: 21)
     }
     
     
@@ -71,4 +71,26 @@ struct UpdateProductResponse: Codable {
     let success: Bool
     let message: String
     let product: Product?
+}
+
+struct Cart: Codable {
+    let id: Int?
+    let userId: Int
+    var cartItems : [CartItem] = []
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, cartItems
+        case userId = "user_id"
+    }
+}
+
+struct CartItem: Codable, Identifiable {
+    let id: Int?
+    let product: Product
+    var quantity: Int = 1
+}
+
+class CartItemResponse: Codable, @unchecked Sendable {
+    let message: String?
+    let success: Bool
 }
