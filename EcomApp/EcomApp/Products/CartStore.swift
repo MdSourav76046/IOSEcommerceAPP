@@ -26,11 +26,12 @@ class CartStore {
         let resource = Resource(url: Constants.Urls.addCartItem, method: .post(bodyData), modelType: CartItemResponse.self)
         let response = try await httpCLient.load(resource)
         
-        if response.success {
-            // Do something
-        }
-        else {
-            // Throw an Error
+        
+        if let cartItem = response.cartItem, response.success {
+            // Initialize the cart if it is nill
+            if cart == nil {
+                guard let userId = UserDefaults.standard.userId else { throw UserError.missingId }
+            }
         }
         
         

@@ -93,4 +93,5 @@ struct CartItem: Codable, Identifiable {
 class CartItemResponse: Codable, @unchecked Sendable {
     let message: String?
     let success: Bool
+    let cartItem: CartItem?
 }
