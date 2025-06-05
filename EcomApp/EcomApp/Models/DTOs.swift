@@ -74,7 +74,7 @@ struct UpdateProductResponse: Codable {
 }
 
 struct Cart: Codable {
-    let id: Int?
+    var id: Int?
     let userId: Int
     var cartItems : [CartItem] = []
     

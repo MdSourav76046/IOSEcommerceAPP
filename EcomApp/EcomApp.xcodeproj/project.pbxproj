@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21189BE52D7BA2930045B265 /* EcomAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21189BE42D7BA2930045B265 /* EcomAppApp.swift */; };
 		21189BE72D7BA2930045B265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21189BE62D7BA2930045B265 /* ContentView.swift */; };
 		21189BE92D7BA2940045B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BE82D7BA2940045B265 /* Assets.xcassets */; };
 		21189BEC2D7BA2950045B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */; };
 		211A5C472D8CBF2400B208C4 /* UploaderDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A5C462D8CBF2400B208C4 /* UploaderDownloader.swift */; };
 		212D909C2D86DD930090C510 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D909B2D86DD930090C510 /* LoginScreen.swift */; };
 		212D909E2D872ED00090C510 /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D909D2D872ED00090C510 /* KeyChainWrapper.swift */; };
+		213C45752DF0EB0A00412027 /* EcomAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C45742DF0EB0A00412027 /* EcomAppApp.swift */; };
+		213C45772DF0EE8700412027 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C45762DF0EE8700412027 /* UserDefaults+Extensions.swift */; };
 		21537BE22D8B510B0058E93B /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21537BE12D8B510B0058E93B /* Errors.swift */; };
 		21537BE42D8B591A0058E93B /* MyProductListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21537BE32D8B591A0058E93B /* MyProductListScreen.swift */; };
 		21537BE62D8B5B280058E93B /* AddProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21537BE52D8B5B280058E93B /* AddProductScreen.swift */; };
@@ -41,13 +42,14 @@
 
 /* Begin PBXFileReference section */
 		21189BE12D7BA2930045B265 /* EcomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21189BE42D7BA2930045B265 /* EcomAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcomAppApp.swift; sourceTree = "<group>"; };
 		21189BE62D7BA2930045B265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21189BE82D7BA2940045B265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		211A5C462D8CBF2400B208C4 /* UploaderDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderDownloader.swift; sourceTree = "<group>"; };
 		212D909B2D86DD930090C510 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		212D909D2D872ED00090C510 /* KeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
+		213C45742DF0EB0A00412027 /* EcomAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcomAppApp.swift; sourceTree = "<group>"; };
+		213C45762DF0EE8700412027 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		21537BE12D8B510B0058E93B /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		21537BE32D8B591A0058E93B /* MyProductListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductListScreen.swift; sourceTree = "<group>"; };
 		21537BE52D8B5B280058E93B /* AddProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductScreen.swift; sourceTree = "<group>"; };
@@ -116,10 +118,10 @@
 				216CA2482D837881003589F5 /* Environment Values */,
 				216CA2452D83771C003589F5 /* Clients */,
 				216CA2422D837648003589F5 /* Controllers */,
-				21189BE42D7BA2930045B265 /* EcomAppApp.swift */,
 				21189BE62D7BA2930045B265 /* ContentView.swift */,
 				21189BE82D7BA2940045B265 /* Assets.xcassets */,
 				21189BEA2D7BA2950045B265 /* Preview Content */,
+				213C45742DF0EB0A00412027 /* EcomAppApp.swift */,
 			);
 			path = EcomApp;
 			sourceTree = "<group>";
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				21D552D12D84DD87000A706D /* String+Extensions.swift */,
+				213C45762DF0EE8700412027 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			files = (
 				216CA2442D837672003589F5 /* AuthonticationController.swift in Sources */,
 				212D909E2D872ED00090C510 /* KeyChainWrapper.swift in Sources */,
+				213C45752DF0EB0A00412027 /* EcomAppApp.swift in Sources */,
 				21189BE72D7BA2930045B265 /* ContentView.swift in Sources */,
 				21D0698F2DCE6D8000D3FAF6 /* CartStore.swift in Sources */,
 				211A5C472D8CBF2400B208C4 /* UploaderDownloader.swift in Sources */,
@@ -341,9 +345,9 @@
 				219D4F362D8DE95D000A8677 /* UploaderEnvironmentKey.swift in Sources */,
 				219D8F7D2D886379000531BE /* HomeScreen.swift in Sources */,
 				219D8F7B2D883ED4000531BE /* JWTTokenValidator.swift in Sources */,
+				213C45772DF0EE8700412027 /* UserDefaults+Extensions.swift in Sources */,
 				216CA24A2D83789E003589F5 /* AuthenticationEnvironmentKey.swift in Sources */,
 				2192E6782D89FD4100891F4E /* ProductCellView.swift in Sources */,
-				21189BE52D7BA2930045B265 /* EcomAppApp.swift in Sources */,
 				21D552CF2D84DC1F000A706D /* RegistrationScreen.swift in Sources */,
 				219D8F802D887EB2000531BE /* RequiresAuthentication.swift in Sources */,
 				21D552C92D84D9A9000A706D /* Constants.swift in Sources */,

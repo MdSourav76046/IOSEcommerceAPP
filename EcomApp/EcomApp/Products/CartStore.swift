@@ -31,10 +31,21 @@ class CartStore {
             // Initialize the cart if it is nill
             if cart == nil {
                 guard let userId = UserDefaults.standard.userId else { throw UserError.missingId }
+                cart = Cart(userId: userId)
+            }
+            
+            // If item already in cart then update it
+            if let index = cart?.cartItems.firstIndex(where: { $0.id == cartItem.id }) {
+                cart?.cartItems[index] = cartItem
+            }
+            else {
+                // it the cart is empty
+                cart?.cartItems.append(cartItem)
             }
         }
-        
-        
+        else {
+            throw CartError.operationFailed(response.message ?? "")
+        }
     }
 }
 
