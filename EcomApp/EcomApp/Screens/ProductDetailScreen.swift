@@ -70,5 +70,5 @@ struct ProductDetailScreen: View {
     NavigationStack{
         ProductDetailScreen(product: Product.preview)
     }
-    .environment(CartStore(httpCLient: .development))
+    .environment(CartStore(httpClient: .development))
 }

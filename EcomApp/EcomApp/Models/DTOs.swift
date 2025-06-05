@@ -90,8 +90,14 @@ struct CartItem: Codable, Identifiable {
     var quantity: Int = 1
 }
 
-class CartItemResponse: Codable, @unchecked Sendable {
+struct CartItemResponse: Codable, @unchecked Sendable {
     let message: String?
     let success: Bool
     let cartItem: CartItem?
+}
+
+struct CartResponse: Codable {
+    let success : Bool
+    let message: String?
+    let cart: Cart?
 }

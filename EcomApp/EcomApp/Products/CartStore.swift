@@ -12,11 +12,23 @@ import Observation
 @Observable
 @MainActor
 class CartStore {
-    let httpCLient: HTTPClient
+    let httpClient: HTTPClient
     var cart: Cart?
     
-    init(httpCLient: HTTPClient) {
-        self.httpCLient = httpCLient
+    init(httpClient: HTTPClient) {
+        self.httpClient = httpClient
+    }
+    
+    func loadCart() async throws {
+        let resource = Resource(url: Constants.Urls.loadCart, modelType: CartResponse.self)
+        let response = try await httpClient.load(resource)
+        
+        if let cart = response.cart, response.success {
+            self.cart = cart
+        }
+        else {
+            throw CartError.operationFailed(response.message ?? "")
+        }
     }
     
     func addItemToCart(productId: Int, quantity: Int) async throws {
@@ -24,7 +36,7 @@ class CartStore {
         let bodyData = try JSONEncoder().encode(body)
         
         let resource = Resource(url: Constants.Urls.addCartItem, method: .post(bodyData), modelType: CartItemResponse.self)
-        let response = try await httpCLient.load(resource)
+        let response = try await httpClient.load(resource)
         
         
         if let cartItem = response.cartItem, response.success {

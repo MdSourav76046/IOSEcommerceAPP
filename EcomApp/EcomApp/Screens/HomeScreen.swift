@@ -37,7 +37,9 @@ extension AppScreen {
     var destination : some View {
         switch self {
         case .home:
-            ProductListScreen()
+            NavigationStack {
+                ProductListScreen()
+            }
         case .myProducts:
             NavigationStack {
                 MyProductListScreen()
@@ -74,4 +76,5 @@ struct HomeScreen: View {
 #Preview {
     HomeScreen()
         .environment(ProductStore(httpClient: .development))
+        .environment(CartStore(httpClient: HTTPClient()))
 }

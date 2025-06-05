@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21042D0C2DF24433002357B6 /* CartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21042D0B2DF24433002357B6 /* CartScreen.swift */; };
 		21189BE72D7BA2930045B265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21189BE62D7BA2930045B265 /* ContentView.swift */; };
 		21189BE92D7BA2940045B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BE82D7BA2940045B265 /* Assets.xcassets */; };
 		21189BEC2D7BA2950045B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21042D0B2DF24433002357B6 /* CartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreen.swift; sourceTree = "<group>"; };
 		21189BE12D7BA2930045B265 /* EcomApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcomApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21189BE62D7BA2930045B265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21189BE82D7BA2940045B265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				21537BE52D8B5B280058E93B /* AddProductScreen.swift */,
 				215BDCB42DA023C2008CE594 /* MyProductDetailScreen.swift */,
 				21D069902DCE862E00D3FAF6 /* ProductDetailScreen.swift */,
+				21042D0B2DF24433002357B6 /* CartScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				219D8F822D889415000531BE /* ProfileScreen.swift in Sources */,
 				216CA2472D83772C003589F5 /* HTTPClient.swift in Sources */,
 				21D552D22D84DD87000A706D /* String+Extensions.swift in Sources */,
+				21042D0C2DF24433002357B6 /* CartScreen.swift in Sources */,
 				21537BE42D8B591A0058E93B /* MyProductListScreen.swift in Sources */,
 				21537BE22D8B510B0058E93B /* Errors.swift in Sources */,
 				215BDCB52DA023C2008CE594 /* MyProductDetailScreen.swift in Sources */,
