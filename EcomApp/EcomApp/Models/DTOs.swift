@@ -101,3 +101,51 @@ struct CartResponse: Codable {
     let message: String?
     let cart: Cart?
 }
+
+
+extension Cart {
+    static var preview: Cart {
+        return Cart(
+            id: 1,
+            userId: 101,
+            cartItems: [
+                CartItem(
+                    id: 1,
+                    product: Product(
+                        id: 201,
+                        name: "Coffee",
+                        description: "This is a great coffee",
+                        price: 10.50,
+                        photoUrl: URL(string: "https://picsum.photos/200/300"),
+                        userId: 101
+                    ),
+                    quantity: 2
+                ),
+                CartItem(
+                    id: 2,
+                    product: Product(
+                        id: 202,
+                        name: "Juice",
+                        description: "This is a great Juice",
+                        price: 5.50,
+                        photoUrl: URL(string: "https://picsum.photos/200/300"),
+                        userId: 101
+                    ),
+                    quantity: 3
+                ),
+                CartItem(
+                    id: 1,
+                    product: Product(
+                        id: 203,
+                        name: "Coca Cola",
+                        description: "This is a great drink",
+                        price: 20.00,
+                        photoUrl: URL(string: "https://picsum.photos/200/300"),
+                        userId: 101
+                    ),
+                    quantity: 1
+                )
+            ]
+        )
+    }
+}

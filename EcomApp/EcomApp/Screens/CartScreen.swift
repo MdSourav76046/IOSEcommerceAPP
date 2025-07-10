@@ -11,10 +11,30 @@ struct CartScreen: View {
     @Environment(CartStore.self) private var cartStore
     var body: some View {
         List {
+            
             if let cart = cartStore.cart {
-                ForEach(cart.cartItems) { cartItem in
-                    Text(cartItem.product.description)
+                HStack{
+                    Text("Total: ")
+                        .font(.title)
+                    Text(cartStore.total, format: .currency(code: "USD"))
+                        .font(.title)
+                        .bold()
                 }
+                
+                Button {
+                   // Action code is written here
+                } label: {
+                    Text("Proceed to checkout^[(\(cartStore.itemsCount) Item)](inflect: true))")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundStyle(.white)
+                        .cornerRadius(8)
+                }
+                .buttonStyle(.borderless)
+                
+                CartItemListView(cartItems: cart.cartItems)
             }
             else {
                 ContentUnavailableView("No Items in the cart", systemImage: "cart")

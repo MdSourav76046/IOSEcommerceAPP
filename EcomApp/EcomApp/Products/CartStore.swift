@@ -19,6 +19,28 @@ class CartStore {
         self.httpClient = httpClient
     }
     
+    var total: Float {
+        var totalAmount: Float = 0.0
+        if let cartItems = cart?.cartItems {
+            for cartItem in cartItems {
+                totalAmount += cartItem.product.price * Float(cartItem.quantity)
+            }
+        }
+        return totalAmount
+    }
+    
+    var itemsCount: Int {
+        var totalItem = 0
+        if let cartItems = cart?.cartItems {
+            for cartItem in cartItems {
+                totalItem += cartItem.quantity
+            }
+        }
+        return totalItem
+    }
+
+    
+    
     func loadCart() async throws {
         let resource = Resource(url: Constants.Urls.loadCart, modelType: CartResponse.self)
         let response = try await httpClient.load(resource)
