@@ -12,6 +12,7 @@
 		21189BE92D7BA2940045B265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BE82D7BA2940045B265 /* Assets.xcassets */; };
 		21189BEC2D7BA2950045B265 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */; };
 		211A5C472D8CBF2400B208C4 /* UploaderDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A5C462D8CBF2400B208C4 /* UploaderDownloader.swift */; };
+		2125161C2E282EC9007B0C40 /* CartItemQuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125161B2E282EC9007B0C40 /* CartItemQuantityView.swift */; };
 		212D909C2D86DD930090C510 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D909B2D86DD930090C510 /* LoginScreen.swift */; };
 		212D909E2D872ED00090C510 /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D909D2D872ED00090C510 /* KeyChainWrapper.swift */; };
 		213C45752DF0EB0A00412027 /* EcomAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C45742DF0EB0A00412027 /* EcomAppApp.swift */; };
@@ -50,6 +51,7 @@
 		21189BE82D7BA2940045B265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21189BEB2D7BA2950045B265 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		211A5C462D8CBF2400B208C4 /* UploaderDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderDownloader.swift; sourceTree = "<group>"; };
+		2125161B2E282EC9007B0C40 /* CartItemQuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemQuantityView.swift; sourceTree = "<group>"; };
 		212D909B2D86DD930090C510 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		212D909D2D872ED00090C510 /* KeyChainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainWrapper.swift; sourceTree = "<group>"; };
 		213C45742DF0EB0A00412027 /* EcomAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcomAppApp.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				2192E6772D89FD4100891F4E /* ProductCellView.swift */,
 				216761052E1EE14B00254058 /* CartItemListView.swift */,
 				216761072E1EF05B00254058 /* CartItemView.swift */,
+				2125161B2E282EC9007B0C40 /* CartItemQuantityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				21D0698F2DCE6D8000D3FAF6 /* CartStore.swift in Sources */,
 				211A5C472D8CBF2400B208C4 /* UploaderDownloader.swift in Sources */,
 				21D069912DCE862E00D3FAF6 /* ProductDetailScreen.swift in Sources */,
+				2125161C2E282EC9007B0C40 /* CartItemQuantityView.swift in Sources */,
 				21D552CC2D84DAED000A706D /* DTOs.swift in Sources */,
 				21537BE62D8B5B280058E93B /* AddProductScreen.swift in Sources */,
 				219D8F822D889415000531BE /* ProfileScreen.swift in Sources */,

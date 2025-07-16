@@ -22,12 +22,12 @@ struct CartItemView: View {
             Spacer()
                 .frame(width: 20)
             
-            VStack(alignment: .center) {
+            VStack(alignment: .leading) {
                 Text(cartItem.product.name)
                     .font(.title3)
                 Text(cartItem.product.price, format: .currency(code: "USD"))
+                CartItemQuantityView(cartItem: cartItem)
             }
-            .frame(height: 100)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
@@ -35,4 +35,5 @@ struct CartItemView: View {
 
 #Preview {
     CartItemView(cartItem: Cart.preview.cartItems[0])
+        .environment(CartStore(httpClient: .development))
 }

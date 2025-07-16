@@ -106,13 +106,13 @@ struct CartResponse: Codable {
 extension Cart {
     static var preview: Cart {
         return Cart(
-            id: 1,
-            userId: 101,
+            id: 2,
+            userId: 21,
             cartItems: [
                 CartItem(
-                    id: 1,
+                    id: 6,
                     product: Product(
-                        id: 201,
+                        id: 73,
                         name: "Coffee",
                         description: "This is a great coffee",
                         price: 10.50,
