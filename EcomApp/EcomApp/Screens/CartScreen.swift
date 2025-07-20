@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct CartScreen: View {
+    
     @Environment(CartStore.self) private var cartStore
+    
     var body: some View {
         List {
-            
             if let cart = cartStore.cart {
-                HStack{
+                
+                HStack {
                     Text("Total: ")
                         .font(.title)
                     Text(cartStore.total, format: .currency(code: "USD"))
@@ -21,32 +23,26 @@ struct CartScreen: View {
                         .bold()
                 }
                 
-                Button {
-                   // Action code is written here
-                } label: {
-                    Text("Proceed to checkout^[(\(cartStore.itemsCount) Item)](inflect: true))")
+                Button(action: {
+                    
+                }) {
+                    
+                    Text("Proceed to checkout ^[(\(cartStore.itemsCount) Item](inflect: true))")
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.green)
                         .foregroundStyle(.white)
                         .cornerRadius(8)
-                }
-                .buttonStyle(.borderless)
+                }.buttonStyle(.borderless)
                 
                 CartItemListView(cartItems: cart.cartItems)
+                
+            } else {
+                ContentUnavailableView("No items in the cart.", systemImage: "cart")
             }
-            else {
-                ContentUnavailableView("No Items in the cart", systemImage: "cart")
-            }
-        }
-        .task {
-            do {
-                try await cartStore.loadCart()
-            }
-            catch {
-                print(error.localizedDescription)
-            }
+        }.task {
+            try? await cartStore.loadCart()
         }
     }
 }
@@ -57,3 +53,4 @@ struct CartScreen: View {
             .environment(CartStore(httpClient: .development))
     }
 }
+

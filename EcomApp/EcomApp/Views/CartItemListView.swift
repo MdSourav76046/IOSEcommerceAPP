@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CartItemListView: View {
+    
     let cartItems: [CartItem]
+    
     var body: some View {
         ForEach(cartItems) { cartItem in
             CartItemView(cartItem: cartItem)

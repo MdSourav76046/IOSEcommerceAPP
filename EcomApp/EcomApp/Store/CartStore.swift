@@ -8,10 +8,10 @@
 import Foundation
 import Observation
 
-
-@Observable
 @MainActor
+@Observable
 class CartStore {
+    
     let httpClient: HTTPClient
     var cart: Cart?
     
@@ -20,35 +20,44 @@ class CartStore {
     }
     
     var total: Float {
-        var totalAmount: Float = 0.0
-        if let cartItems = cart?.cartItems {
-            for cartItem in cartItems {
-                totalAmount += cartItem.product.price * Float(cartItem.quantity)
-            }
-        }
-        return totalAmount
+        cart?.cartItems.reduce(0.0, { total, cartItem in
+            total + (cartItem.product.price * Float(cartItem.quantity))
+        }) ?? 0.0
     }
     
     var itemsCount: Int {
-        var totalItem = 0
-        if let cartItems = cart?.cartItems {
-            for cartItem in cartItems {
-                totalItem += cartItem.quantity
+        cart?.cartItems.reduce(0, { total, cartItem  in
+            total + cartItem.quantity
+        }) ?? 0
+    }
+    
+    func emptycart() {
+        cart?.cartItems = []
+    }
+    
+    func deletecartItem(cartItemId: Int) async throws {
+        let resource = Resource(url: Constants.Urls.deleteCartItem(cartItemId), method: .delete, modelType: DeleteCartItemResponse.self)
+        let response = try await httpClient.load(resource)
+        
+        if response.success {
+            if let cart = cart {
+                self.cart?.cartItems = cart.cartItems.filter{ $0.id != cartItemId }
+            }
+            else {
+                throw CartError.operationFailed(response.message ?? "")
             }
         }
-        return totalItem
+        
     }
-
-    
     
     func loadCart() async throws {
+        
         let resource = Resource(url: Constants.Urls.loadCart, modelType: CartResponse.self)
         let response = try await httpClient.load(resource)
         
         if let cart = response.cart, response.success {
             self.cart = cart
-        }
-        else {
+        } else {
             throw CartError.operationFailed(response.message ?? "")
         }
     }
@@ -58,32 +67,32 @@ class CartStore {
     }
     
     func addItemToCart(productId: Int, quantity: Int) async throws {
-        let body  = ["productId": productId, "quantity": quantity]
+        
+        let body = ["productId": productId, "quantity": quantity]
         let bodyData = try JSONEncoder().encode(body)
         
         let resource = Resource(url: Constants.Urls.addCartItem, method: .post(bodyData), modelType: CartItemResponse.self)
         let response = try await httpClient.load(resource)
         
-        
         if let cartItem = response.cartItem, response.success {
-            // Initialize the cart if it is nill
+            // initialize the cart if it is nil
             if cart == nil {
                 guard let userId = UserDefaults.standard.userId else { throw UserError.missingId }
                 cart = Cart(userId: userId)
             }
             
-            // If item already in cart then update it
+            // if item already in cart then update it
             if let index = cart?.cartItems.firstIndex(where: { $0.id == cartItem.id }) {
                 cart?.cartItems[index] = cartItem
-            }
-            else {
-                // it the cart is empty
+            } else {
+                // add as new cart item
                 cart?.cartItems.append(cartItem)
             }
-        }
-        else {
+        } else {
             throw CartError.operationFailed(response.message ?? "")
         }
+        
     }
+    
 }
 

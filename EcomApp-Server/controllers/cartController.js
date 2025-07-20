@@ -1,6 +1,27 @@
 const { where } = require('sequelize')
 const models = require('../models')
 
+// Delete a cart item from the database
+exports.removeCartItem = async(req, res) => {
+    try{
+        const { cartItemId } = req.params
+        console.log(cartItemId)
+        const deletedItem = await models.CartItem.destroy({
+            where: {
+                id: cartItemId
+            }
+        })
+
+        if(!deletedItem){
+            return res.status(404).json({ success: false, message: "Item not found" })
+        }
+        return res.status(200).json({ success: true, message: "Item removed from the cart" })
+    }
+    catch(err){
+        return res.status(500).json({ success: false, message: "An error occur while removing the item" })
+    }
+}
+
 // Load cart to display in the frontend
 exports.loadCart = async(req, res) => {
     try {

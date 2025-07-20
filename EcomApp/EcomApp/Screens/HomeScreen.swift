@@ -62,12 +62,14 @@ extension AppScreen {
 struct HomeScreen: View {
     
     @State var selection : AppScreen?
+    @Environment(CartStore.self) private var cartStore
     var body: some View {
         TabView(selection: $selection) {
             ForEach(AppScreen.allCases) { screen in
                 screen.destination
                     .tag(screen as AppScreen?)
                     .tabItem { screen.label }
+                    .badge((screen as AppScreen?) == .cart ? cartStore.itemsCount: 0)
             }
         }
     }

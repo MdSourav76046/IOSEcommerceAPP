@@ -116,7 +116,7 @@
 				211A5C452D8CBF1100B208C4 /* Services */,
 				21537BE02D8B50D00058E93B /* Custom Errors */,
 				2192E6762D89FD2B00891F4E /* Views */,
-				219D8F852D88F8D0000531BE /* Products */,
+				219D8F852D88F8D0000531BE /* Store */,
 				219D8F7E2D887E96000531BE /* View Modifires */,
 				219D8F792D883EBA000531BE /* Validators */,
 				21D552D02D84DD6B000A706D /* Extensions */,
@@ -210,13 +210,13 @@
 			path = "View Modifires";
 			sourceTree = "<group>";
 		};
-		219D8F852D88F8D0000531BE /* Products */ = {
+		219D8F852D88F8D0000531BE /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				219D8F862D88F8EA000531BE /* ProductStore.swift */,
 				21D0698E2DCE6D8000D3FAF6 /* CartStore.swift */,
 			);
-			path = Products;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		21D552C52D84D960000A706D /* Utils */ = {

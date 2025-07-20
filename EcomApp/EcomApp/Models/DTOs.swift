@@ -102,6 +102,11 @@ struct CartResponse: Codable {
     let cart: Cart?
 }
 
+struct DeleteCartItemResponse: Codable {
+    let message: String?
+    let success: Bool
+}
+
 
 extension Cart {
     static var preview: Cart {
@@ -124,7 +129,7 @@ extension Cart {
                 CartItem(
                     id: 2,
                     product: Product(
-                        id: 202,
+                        id: 74,
                         name: "Juice",
                         description: "This is a great Juice",
                         price: 5.50,

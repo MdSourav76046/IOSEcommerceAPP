@@ -5,6 +5,7 @@
 //  Created by Md.Sourav on 17/7/25.
 //
 
+
 import SwiftUI
 
 enum QuantityChangeType: Equatable {
@@ -17,26 +18,28 @@ struct CartItemQuantityView: View {
     let cartItem: CartItem
     @State private var quantity: Int = 0
     @State private var quantityChangeType: QuantityChangeType?
+    
     @Environment(CartStore.self) private var cartStore
-     
+    
     var body: some View {
-        HStack{
+        HStack {
             Button {
+                
                 if quantity == 1 {
                     quantityChangeType = .delete
-                }
-                else {
+                } else {
                     quantity -= 1
                     quantityChangeType = .update(-1)
                 }
+                
             } label: {
-                Image(systemName: quantity == 1 ? "trash" : "minus")
+                Image(systemName: cartItem.quantity == 1 ? "trash" : "minus")
                     .frame(width: 24, height: 24)
             }
             
-            Text("\(quantity)")
+            Text("\(cartItem.quantity)")
             
-            Button{
+            Button {
                 quantity += 1
                 quantityChangeType = .update(1)
             } label: {
@@ -46,14 +49,18 @@ struct CartItemQuantityView: View {
         .task(id: quantityChangeType) {
             if let quantityChangeType {
                 switch quantityChangeType {
-                case .update(let quantity):
+                    case .update(let quantity):
+                        do {
+                            try await cartStore.updateItemQuantity(productId: cartItem.product.id!, quantity: quantity)
+                        } catch {
+                            print(error)
+                        }
+                    case .delete:
                     do {
-                        try await cartStore.updateItemQuantity(productId: cartItem.product.id!, quantity: quantity)
+                        try await cartStore.deletecartItem(cartItemId: cartItem.id!)
                     } catch {
-                        print(error)
+                        print(error.localizedDescription)
                     }
-                case .delete:
-                    print("deletecartItem")
                 }
             }
             
